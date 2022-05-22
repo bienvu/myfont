@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer } from 'react'
+import axios from 'axios'
 import Context from './Context'
 import reducer, { initState } from './reducer'
 import { actions } from '.'
@@ -10,16 +11,21 @@ export default function Provider({ children }) {
 
   // Function fetch data.
   async function fetchData(type, callback) {
-    try {
-      const requestUrl = `http://json.ffwagency.md/${type}`
-      const response = await fetch(requestUrl)
-      const responseJSON = await response.json()
-      console.log(responseJSON)
-      dispatch(callback(responseJSON))
-    } catch (error) {
-      console.log('error', error.message)
-    }
+    const { data } = await axios.get(`http://json.ffwagency.md/${type}`)
+    console.log(data)
+    dispatch(callback(data))
   }
+  // async function fetchData(type, callback) {
+  //   try {
+  //     const requestUrl = `http://json.ffwagency.md/${type}`
+  //     const response = await fetch(requestUrl)
+  //     const responseJSON = await response.json()
+  //     console.log(responseJSON)
+  //     dispatch(callback(responseJSON))
+  //   } catch (error) {
+  //     console.log('error', error.message)
+  //   }
+  // }
 
   useEffect(() => {
     // Fetch data from API
