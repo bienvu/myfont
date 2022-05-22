@@ -14,9 +14,10 @@ export default function Provider({ children }) {
       const requestUrl = `http://json.ffwagency.md/${type}`
       const response = await fetch(requestUrl)
       const responseJSON = await response.json()
+      console.log(responseJSON)
       dispatch(callback(responseJSON))
     } catch (error) {
-      throw new Error('error', error.message)
+      console.log('error', error.message)
     }
   }
 
