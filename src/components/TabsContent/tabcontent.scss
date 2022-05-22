@@ -1,0 +1,104 @@
+.cpnFont {
+  max-width: 800px;
+  margin: 50px auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media (max-width: 767px) {
+      justify-content: center;
+    }
+  }
+
+  &__content {
+    border: 2px solid #ddd;
+    padding: 50px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    @media (max-width: 767px) {
+      padding: 20px;
+    }
+  }
+}
+
+.fontList {
+  width: 45%;
+  float: right;
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #000;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  &.is-active {
+    opacity: 0.5;
+  }
+
+  &__key {
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding: 2px;
+    min-width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    display: flex;
+    color: #ddd;
+    font-weight: bold;
+    margin-right: 20px;
+
+    span {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 10px;
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    position: relative;
+    padding-left: 15px;
+    font-weight: 500;
+
+    &:before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background-color: #aaa;
+      border-radius: 100%;
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 7px;
+    }
+  }
+
+  &:first-child {
+    @media (min-width: 768px) {
+      float: left;
+      flex-wrap: wrap;
+      width: 40%;
+
+      .fontList__key {
+        min-width: 200px;
+        height: 200px;
+        font-size: 40px;
+      }
+    }
+  }
+}
